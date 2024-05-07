@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    environment:
+      - MARIADB_HOST=localhost
+      - MARIADB_USER=root
+      - MARIADB_PASSWORD=my-secret-pw
+      - MARIADB_DATABASE=mydatabase
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MARIADB_HOST=localhost
+      - MARIADB_USER=root
+      - MARIADB_PASSWORD=my-secret-pw
+      - MARIADB_DATABASE=mydatabase
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  mariadb_data:
