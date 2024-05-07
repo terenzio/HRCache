@@ -7,11 +7,6 @@ services:
       - "8080:8080"
     depends_on:
       - mariadb
-    environment:
-      - MARIADB_HOST=localhost
-      - MARIADB_USER=root
-      - MARIADB_PASSWORD=my-secret-pw
-      - MARIADB_DATABASE=mydatabase
 
   mariadb:
     image: mariadb:latest
